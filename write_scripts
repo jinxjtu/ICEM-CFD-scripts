@@ -1,0 +1,91 @@
+%% 09/04/2019 author:jinjin li
+%%% writing a script in the ICEM CFD
+
+clear;
+clc;
+
+%% name the file
+default_address='M:\Desktop\WINDTUNNELwork\NUMERICAL_CALCULATION\SLOT\002contoured_slot\01slotcurve\file_generated';
+default_name='test.txt';
+
+%%% check if input, use the input directory; else, use the default directory
+input_address = 'Please enter the directory of Script: '; 
+address_scripts_0 = input(input_address,'s');
+addresscheck = 'Please enter the directory of Script: ';
+if length(address_scripts_0) == 0
+  address_scripts = default_address;
+else
+  address_scripts = address_scripts_0;
+end
+
+input_name = 'Please enter the name of Script: ';
+name_scripts_0 = input(input_name,'s');
+namecheck = 'Please enter the name of Script: ';
+if  length(name_scripts_0) == 0
+        name_scripts = default_name;
+else
+    name_scripts = name_scripts_0;
+end
+
+fullname_scripts = fullfile(address_scripts,name_scripts);
+
+fid=fopen(fullname_scripts,'wt');
+if fid == -1
+  error('Cannot open file: %s', fullname_scripts);
+else
+   import_points(fid);
+   draw_curves(fid,1,200);
+   fclose(fid);
+end
+
+
+
+
+
+function import_points (fid2)
+ %%% this function is for importing points from txt files 
+        input_address = 'Please enter the address of points file: ';
+        address_pointsfile = input(input_address,'s');
+        input_name = 'Please enter the name of points file: ';
+        name_pointsfile = input(input_name,'s');
+        fullname_pointsfile = fullfile(address_pointsfile,name_pointsfile);
+           
+        string1 = 'ic_undo_group_begin';
+        fprintf(fid2,'%s\n',string1);
+        string2_1 = 'ic_delete_geometry curve names crv.';
+        fprintf(fid2,'ic_geo_cre_geom_input %s\n', fullname_pointsfile);
+        
+        string4 = 'ic_undo_group_end';
+        fprintf(fid2,'%s\n', string4);
+        
+end
+  
+
+
+function draw_curves ( fid2, no_curve, num_points)
+  
+ %%% this function is for draw curves 
+        string1 = 'ic_undo_group_begin';
+        fprintf(fid2,'%s\n',string1);
+        string2_1 = 'ic_delete_geometry curve names crv.';
+
+        n2 = no_curve ;
+        string2_2 = ' 0';
+        fprintf(fid2,'%s%d%s\n',string2_1,n2,string2_2);
+
+        string3_1 = 'ic_curve point PNTS crv.';
+        n3 = n2 ;
+        fprintf(fid2,'%s%d%',string3_1,n2);
+        fprintf(fid2,' {');
+        for i = 0 : num_points
+          fprintf(fid2,'pnt%d ',i);
+        end
+        fprintf(fid2,'} \n');
+        string4 = 'ic_undo_group_end';
+        fprintf(fid2,'%s\n', string4);
+        
+end
+  
+
+
+
