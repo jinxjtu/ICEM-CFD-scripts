@@ -1,0 +1,30 @@
+## import
+
+ic_undo_group_begin 
+ic_geo_cre_geom_input M:/Desktop/WINDTUNNELwork/NUMERICAL_CALCULATION/SLOT/002contoured_slot/01slotcurve/file_generated/slotcurve_gauss1_09042019.dat 0.001 input PNTS pnt CRVS crv SURFS srf
+ic_boco_solver 
+ic_boco_clear_icons 
+ic_undo_group_end 
+
+# set tolerence
+
+ic_set_global geo_cad 0.07 toler
+
+# generate curves
+
+ic_undo_group_begin 
+ic_delete_geometry curve names crv.01 0
+ic_curve point PNTS crv.01 {pnt0.1 pnt1 pnt2 pnt3 pnt4 pnt5 pnt6 pnt7 pnt8 pnt9 pnt10 pnt103 pnt160 pnt187 pnt200.1}
+ic_undo_group_end 
+
+
+#  delete the points
+
+ic_undo_group_begin 
+ic_delete_geometry point names {pnt40 pnt39 pnt38 pnt37 pnt36 pnt35 pnt34 pnt33 pnt32 pnt31 pnt30 pnt29 pnt28 pnt27 pnt26 pnt25 pnt24 pnt23 pnt22 pnt21 pnt20 pnt19 pnt18 pnt17 pnt16 pnt15 pnt14 pnt13 pnt12 pnt11 pnt10 pnt9 pnt8 pnt7 pnt6 pnt5 pnt4 pnt3 pnt2 pnt1} 0 1
+ic_set_dormant_pickable point 0 {}
+ic_undo_group_end 
+
+#  delete the curves
+
+
