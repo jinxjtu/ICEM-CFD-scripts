@@ -1,5 +1,5 @@
 ic_undo_group_begin
-ic_geo_cre_geom_input M:/Desktop/WINDTUNNELwork/NUMERICAL_CALCULATION/SLOT/002contoured_slot/01slotcurve/file_generated/ContourSlot_LeadingEdgePoint_portion1by2_SigmaLby6.dat 0.001 input PNTS pnt CRVS crv SURFS srf
+ic_geo_cre_geom_input M:/Desktop/WINDTUNNELwork/NUMERICAL_CALCULATION/SLOT/002contoured_slot/01slotcurve/file_generated/ContourSlot_LeadingEdgePoint_portion1by2_SigmaLby9.dat 0.001 input PNTS pnt CRVS crv SURFS srf
 ic_boco_solver 
 ic_boco_clear_icons
 ic_undo_group_end
